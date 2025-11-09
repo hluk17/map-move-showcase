@@ -26,19 +26,19 @@ const Hero = () => {
       <div className="container mx-auto px-4 z-10 pt-16">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground leading-tight">
-            Your Trusted
-            <span className="text-primary block">Logistics Partner</span>
+            Evinize Taşınırken
+            <span className="text-primary block">Yanınızdayız</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-muted-foreground max-w-2xl">
-            Professional moving and logistics services with years of experience. We handle your cargo with care, every mile of the way.
+            Yılların deneyimiyle ev ve ofis taşımacılığında profesyonel hizmet. Eşyalarınızı güvenle yeni adresinize taşıyoruz.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" variant="accent" onClick={scrollToQuote} className="group">
-              Request a Quote
+              Ücretsiz Teklif Al
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button size="lg" variant="outline" onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}>
-              Our Services
+              Hizmetlerimiz
             </Button>
           </div>
         </div>

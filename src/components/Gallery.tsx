@@ -7,23 +7,23 @@ import gallery4 from "@/assets/gallery-4.jpg";
 const galleryImages = [
   {
     src: gallery1,
-    alt: "Modern warehouse with organized logistics operations",
-    title: "Warehouse Operations",
+    alt: "Organize edilmiş depo alanı",
+    title: "Depo Hizmetleri",
   },
   {
     src: gallery2,
-    alt: "Delivery truck being loaded with furniture",
-    title: "Residential Moving",
+    alt: "Mobilya yükleme işlemi",
+    title: "Ev Taşıma",
   },
   {
     src: gallery3,
-    alt: "Professional handling of packages",
-    title: "Package Handling",
+    alt: "Profesyonel paketleme",
+    title: "Eşya Paketleme",
   },
   {
     src: gallery4,
-    alt: "Commercial office moving services",
-    title: "Commercial Transport",
+    alt: "Ofis taşıma hizmeti",
+    title: "Ofis Taşıma",
   },
 ];
 
@@ -34,9 +34,9 @@ const Gallery = () => {
     <section id="gallery" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Our Work</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Çalışmalarımız</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A showcase of our successful projects and satisfied customers
+            Başarıyla tamamladığımız taşıma işleri ve mutlu müşterilerimiz
           </p>
         </div>
 

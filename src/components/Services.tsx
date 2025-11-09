@@ -4,23 +4,23 @@ import { Truck, Package, Clock, Shield } from "lucide-react";
 const services = [
   {
     icon: Truck,
-    title: "Residential Moving",
-    description: "Professional home moving services with careful handling of your belongings.",
+    title: "Ev Taşıma",
+    description: "Mobilyalarınız ve eşyalarınızla birlikte yeni evinize güvenli taşınma.",
   },
   {
     icon: Package,
-    title: "Commercial Transport",
-    description: "Efficient office relocations and commercial cargo transportation.",
+    title: "Eşya Paketleme",
+    description: "Profesyonel paketleme malzemeleri ile eşyalarınızın korunması.",
   },
   {
     icon: Clock,
-    title: "Express Delivery",
-    description: "Time-sensitive deliveries handled with priority and precision.",
+    title: "Ofis Taşıma",
+    description: "İş yerinizi minimum aksama ile yeni adresinize taşıma hizmeti.",
   },
   {
     icon: Shield,
-    title: "Insured Services",
-    description: "All shipments fully insured for your peace of mind.",
+    title: "Sigortalı Taşıma",
+    description: "Tüm eşyalarınız nakliye sigortası kapsamında güvence altında.",
   },
 ];
 
@@ -29,9 +29,9 @@ const Services = () => {
     <section id="services" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Our Services</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Hizmetlerimiz</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive logistics solutions tailored to your needs
+            Taşınma sürecinizin her aşamasında yanınızdayız
           </p>
         </div>
 

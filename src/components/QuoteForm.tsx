@@ -26,7 +26,7 @@ const QuoteForm = () => {
     e.preventDefault();
     // Here you would integrate with your Google Maps API and backend
     console.log("Form submitted:", formData);
-    toast.success("Quote request submitted! We'll contact you shortly.");
+    toast.success("Teklifiniz alındı! En kısa sürede sizinle iletişime geçeceğiz.");
     
     // Reset form
     setFormData({
@@ -54,36 +54,36 @@ const QuoteForm = () => {
     <section id="quote" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Request a Quote</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Ücretsiz Teklif Alın</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Fill out the form below and we'll get back to you with a competitive quote
+            Formu doldurun, size en uygun fiyatı hemen gönderelim
           </p>
         </div>
 
         <Card className="max-w-3xl mx-auto shadow-medium">
           <CardHeader>
-            <CardTitle>Quote Request Form</CardTitle>
-            <CardDescription>Please provide details about your moving or transport needs</CardDescription>
+            <CardTitle>Teklif Formu</CardTitle>
+            <CardDescription>Taşınma ihtiyaçlarınız hakkında bilgi verin</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Contact Information */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Contact Information</h3>
+                <h3 className="text-lg font-semibold text-foreground">İletişim Bilgileri</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name *</Label>
+                    <Label htmlFor="name">Ad Soyad *</Label>
                     <Input
                       id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      placeholder="John Doe"
+                      placeholder="Ahmet Yılmaz"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number *</Label>
+                    <Label htmlFor="phone">Telefon Numarası *</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -91,12 +91,12 @@ const QuoteForm = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="0555 123 45 67"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
+                  <Label htmlFor="email">E-posta *</Label>
                   <Input
                     id="email"
                     name="email"
@@ -104,7 +104,7 @@ const QuoteForm = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    placeholder="john@example.com"
+                    placeholder="ornek@email.com"
                   />
                 </div>
               </div>
@@ -113,44 +113,44 @@ const QuoteForm = () => {
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                   <MapPin className="w-5 h-5 text-primary" />
-                  Pickup Location
+                  Mevcut Adres
                 </h3>
                 <div className="space-y-2">
-                  <Label htmlFor="pickupAddress">Pickup Address *</Label>
+                  <Label htmlFor="pickupAddress">Taşınacak Adres *</Label>
                   <Input
                     id="pickupAddress"
                     name="pickupAddress"
                     value={formData.pickupAddress}
                     onChange={handleInputChange}
                     required
-                    placeholder="123 Main St, City, State, ZIP"
+                    placeholder="Örnek Mahallesi, Sokak No:1, İlçe, İl"
                   />
-                  <p className="text-sm text-muted-foreground">Note: Google Maps integration can be added here</p>
+                  <p className="text-sm text-muted-foreground">Not: Buraya Google Maps entegrasyonu eklenebilir</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="pickupFloor">Floor Number</Label>
+                    <Label htmlFor="pickupFloor">Kat Numarası</Label>
                     <Input
                       id="pickupFloor"
                       name="pickupFloor"
                       value={formData.pickupFloor}
                       onChange={handleInputChange}
-                      placeholder="e.g., 3rd floor"
+                      placeholder="örn: 3. kat"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="pickupElevator">Elevator Available?</Label>
+                    <Label htmlFor="pickupElevator">Asansör Var mı?</Label>
                     <Select
                       value={formData.pickupElevator}
                       onValueChange={(value) => setFormData({ ...formData, pickupElevator: value })}
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Select option" />
+                        <SelectValue placeholder="Seçiniz" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="yes">Yes</SelectItem>
-                        <SelectItem value="no">No</SelectItem>
-                        <SelectItem value="not-applicable">Not Applicable</SelectItem>
+                        <SelectItem value="yes">Var</SelectItem>
+                        <SelectItem value="no">Yok</SelectItem>
+                        <SelectItem value="not-applicable">Müstakil/Zemin Kat</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -161,44 +161,44 @@ const QuoteForm = () => {
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                   <MapPin className="w-5 h-5 text-accent" />
-                  Delivery Location
+                  Varış Adresi
                 </h3>
                 <div className="space-y-2">
-                  <Label htmlFor="deliveryAddress">Delivery Address *</Label>
+                  <Label htmlFor="deliveryAddress">Taşınacak Adres *</Label>
                   <Input
                     id="deliveryAddress"
                     name="deliveryAddress"
                     value={formData.deliveryAddress}
                     onChange={handleInputChange}
                     required
-                    placeholder="456 Oak Ave, City, State, ZIP"
+                    placeholder="Yeni Mahallesi, Cadde No:10, İlçe, İl"
                   />
-                  <p className="text-sm text-muted-foreground">Note: Google Maps integration can be added here</p>
+                  <p className="text-sm text-muted-foreground">Not: Buraya Google Maps entegrasyonu eklenebilir</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="deliveryFloor">Floor Number</Label>
+                    <Label htmlFor="deliveryFloor">Kat Numarası</Label>
                     <Input
                       id="deliveryFloor"
                       name="deliveryFloor"
                       value={formData.deliveryFloor}
                       onChange={handleInputChange}
-                      placeholder="e.g., Ground floor"
+                      placeholder="örn: Zemin kat"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="deliveryElevator">Elevator Available?</Label>
+                    <Label htmlFor="deliveryElevator">Asansör Var mı?</Label>
                     <Select
                       value={formData.deliveryElevator}
                       onValueChange={(value) => setFormData({ ...formData, deliveryElevator: value })}
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Select option" />
+                        <SelectValue placeholder="Seçiniz" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="yes">Yes</SelectItem>
-                        <SelectItem value="no">No</SelectItem>
-                        <SelectItem value="not-applicable">Not Applicable</SelectItem>
+                        <SelectItem value="yes">Var</SelectItem>
+                        <SelectItem value="no">Yok</SelectItem>
+                        <SelectItem value="not-applicable">Müstakil/Zemin Kat</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -207,19 +207,19 @@ const QuoteForm = () => {
 
               {/* Additional Notes */}
               <div className="space-y-2">
-                <Label htmlFor="notes">Additional Notes</Label>
+                <Label htmlFor="notes">Ek Notlar</Label>
                 <Textarea
                   id="notes"
                   name="notes"
                   value={formData.notes}
                   onChange={handleInputChange}
-                  placeholder="Any special requirements, fragile items, or additional information..."
+                  placeholder="Özel istekleriniz, kırılabilir eşyalar veya ek bilgiler..."
                   rows={4}
                 />
               </div>
 
               <Button type="submit" variant="accent" size="lg" className="w-full">
-                Submit Quote Request
+                Teklif Talebini Gönder
               </Button>
             </form>
           </CardContent>
