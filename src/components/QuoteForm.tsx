@@ -6,25 +6,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { MapPin, Map, Navigation } from "lucide-react";
-import GoogleMapsLoader from "./GoogleMapsLoader";
-import AddressAutocomplete from "./AddressAutocomplete";
-import RouteMap from "./RouteMap";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { MapPin } from "lucide-react";
 
 const QuoteForm = () => {
-  const [apiKey, setApiKey] = useState("");
-  const [showMap, setShowMap] = useState(false);
-  const [distance, setDistance] = useState("");
-  const [duration, setDuration] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     pickupAddress: "",
     deliveryAddress: "",
-    pickupPlaceId: "",
-    deliveryPlaceId: "",
     pickupFloor: "",
     deliveryFloor: "",
     pickupElevator: "",
@@ -34,12 +24,7 @@ const QuoteForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const submissionData = {
-      ...formData,
-      distance,
-      duration,
-    };
-    console.log("Form submitted:", submissionData);
+    console.log("Form submitted:", formData);
     toast.success("Teklifiniz alındı! En kısa sürede sizinle iletişime geçeceğiz.");
     
     // Reset form
@@ -49,17 +34,12 @@ const QuoteForm = () => {
       phone: "",
       pickupAddress: "",
       deliveryAddress: "",
-      pickupPlaceId: "",
-      deliveryPlaceId: "",
       pickupFloor: "",
       deliveryFloor: "",
       pickupElevator: "",
       deliveryElevator: "",
       notes: "",
     });
-    setShowMap(false);
-    setDistance("");
-    setDuration("");
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -67,23 +47,6 @@ const QuoteForm = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-  };
-
-  const handleAddressChange = (name: string, value: string, placeId?: string) => {
-    setFormData({
-      ...formData,
-      [name]: value,
-      [`${name}PlaceId`]: placeId || "",
-    });
-    setShowMap(false);
-  };
-
-  const handleCalculateRoute = () => {
-    if (formData.pickupAddress && formData.deliveryAddress && apiKey) {
-      setShowMap(true);
-    } else {
-      toast.error("Lütfen her iki adresi de girin ve API anahtarını ekleyin.");
-    }
   };
 
   return (
@@ -102,35 +65,6 @@ const QuoteForm = () => {
             <CardDescription>Taşınma ihtiyaçlarınız hakkında bilgi verin</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="mb-6">
-              <Alert>
-                <Map className="h-4 w-4" />
-                <AlertDescription>
-                  <div className="space-y-2">
-                    <p className="font-semibold">Google Maps API Anahtarı</p>
-                    <Input
-                      type="text"
-                      value={apiKey}
-                      onChange={(e) => setApiKey(e.target.value)}
-                      placeholder="Google Maps API anahtarınızı buraya girin"
-                    />
-                    <p className="text-xs text-muted-foreground">
-                      API anahtarınızı{" "}
-                      <a
-                        href="https://console.cloud.google.com/google/maps-apis"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline"
-                      >
-                        Google Cloud Console
-                      </a>
-                      'dan alabilirsiniz.
-                    </p>
-                  </div>
-                </AlertDescription>
-              </Alert>
-            </div>
-
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Contact Information */}
               <div className="space-y-4">
@@ -180,34 +114,17 @@ const QuoteForm = () => {
                   <MapPin className="w-5 h-5 text-primary" />
                   Mevcut Adres
                 </h3>
-                <GoogleMapsLoader apiKey={apiKey}>
-                  {(loaded) =>
-                    loaded ? (
-                      <AddressAutocomplete
-                        id="pickupAddress"
-                        name="pickupAddress"
-                        label="Taşınacak Adres *"
-                        value={formData.pickupAddress}
-                        onChange={(value, placeId) => handleAddressChange("pickupAddress", value, placeId)}
-                        required
-                        placeholder="Adres yazın veya haritadan seçin"
-                        apiKey={apiKey}
-                      />
-                    ) : (
-                      <div className="space-y-2">
-                        <Label htmlFor="pickupAddress">Taşınacak Adres *</Label>
-                        <Input
-                          id="pickupAddress"
-                          name="pickupAddress"
-                          value={formData.pickupAddress}
-                          onChange={handleInputChange}
-                          required
-                          placeholder="Örnek Mahallesi, Sokak No:1, İlçe, İl"
-                        />
-                      </div>
-                    )
-                  }
-                </GoogleMapsLoader>
+                <div className="space-y-2">
+                  <Label htmlFor="pickupAddress">Taşınacak Adres *</Label>
+                  <Input
+                    id="pickupAddress"
+                    name="pickupAddress"
+                    value={formData.pickupAddress}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Örnek Mahallesi, Sokak No:1, İlçe, İl"
+                  />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="pickupFloor">Kat Numarası</Label>
@@ -244,34 +161,17 @@ const QuoteForm = () => {
                   <MapPin className="w-5 h-5 text-accent" />
                   Varış Adresi
                 </h3>
-                <GoogleMapsLoader apiKey={apiKey}>
-                  {(loaded) =>
-                    loaded ? (
-                      <AddressAutocomplete
-                        id="deliveryAddress"
-                        name="deliveryAddress"
-                        label="Taşınacak Adres *"
-                        value={formData.deliveryAddress}
-                        onChange={(value, placeId) => handleAddressChange("deliveryAddress", value, placeId)}
-                        required
-                        placeholder="Adres yazın veya haritadan seçin"
-                        apiKey={apiKey}
-                      />
-                    ) : (
-                      <div className="space-y-2">
-                        <Label htmlFor="deliveryAddress">Taşınacak Adres *</Label>
-                        <Input
-                          id="deliveryAddress"
-                          name="deliveryAddress"
-                          value={formData.deliveryAddress}
-                          onChange={handleInputChange}
-                          required
-                          placeholder="Yeni Mahallesi, Cadde No:10, İlçe, İl"
-                        />
-                      </div>
-                    )
-                  }
-                </GoogleMapsLoader>
+                <div className="space-y-2">
+                  <Label htmlFor="deliveryAddress">Taşınacak Adres *</Label>
+                  <Input
+                    id="deliveryAddress"
+                    name="deliveryAddress"
+                    value={formData.deliveryAddress}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Yeni Mahallesi, Cadde No:10, İlçe, İl"
+                  />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="deliveryFloor">Kat Numarası</Label>
@@ -301,53 +201,6 @@ const QuoteForm = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Route Calculation */}
-              {apiKey && formData.pickupAddress && formData.deliveryAddress && (
-                <div className="space-y-4">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={handleCalculateRoute}
-                    className="w-full"
-                  >
-                    <Navigation className="w-4 h-4 mr-2" />
-                    Rota ve Mesafeyi Hesapla
-                  </Button>
-
-                  {showMap && (
-                    <GoogleMapsLoader apiKey={apiKey}>
-                      {(loaded) =>
-                        loaded ? (
-                          <div className="space-y-4">
-                            <RouteMap
-                              origin={formData.pickupAddress}
-                              destination={formData.deliveryAddress}
-                              apiKey={apiKey}
-                              onDistanceCalculated={(dist, dur) => {
-                                setDistance(dist);
-                                setDuration(dur);
-                              }}
-                            />
-                            {distance && duration && (
-                              <Alert>
-                                <Navigation className="h-4 w-4" />
-                                <AlertDescription>
-                                  <div className="space-y-1">
-                                    <p className="font-semibold">Rota Bilgileri</p>
-                                    <p className="text-sm">Mesafe: {distance}</p>
-                                    <p className="text-sm">Tahmini Süre: {duration}</p>
-                                  </div>
-                                </AlertDescription>
-                              </Alert>
-                            )}
-                          </div>
-                        ) : null
-                      }
-                    </GoogleMapsLoader>
-                  )}
-                </div>
-              )}
 
               {/* Additional Notes */}
               <div className="space-y-2">
