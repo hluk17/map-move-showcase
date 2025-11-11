@@ -1,26 +1,31 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Truck, Package, Clock, Shield } from "lucide-react";
+import { Truck, MapPin, Briefcase, Package, Network } from "lucide-react";
 
 const services = [
   {
     icon: Truck,
-    title: "Ev Taşıma",
-    description: "Mobilyalarınız ve eşyalarınızla birlikte yeni evinize güvenli taşınma.",
+    title: "Şehir İçi",
+    description: "İl sınırları içerisinde hızlı ve güvenli ev taşıma hizmetleri.",
   },
   {
-    icon: Package,
-    title: "Eşya Paketleme",
-    description: "Profesyonel paketleme malzemeleri ile eşyalarınızın korunması.",
+    icon: MapPin,
+    title: "Şehirler Arası",
+    description: "Türkiye'nin her yerine profesyonel şehirler arası taşımacılık.",
   },
   {
-    icon: Clock,
-    title: "Ofis Taşıma",
+    icon: Briefcase,
+    title: "Ofis Taşımacılığı",
     description: "İş yerinizi minimum aksama ile yeni adresinize taşıma hizmeti.",
   },
   {
-    icon: Shield,
-    title: "Sigortalı Taşıma",
-    description: "Tüm eşyalarınız nakliye sigortası kapsamında güvence altında.",
+    icon: Package,
+    title: "Ufak Büyük Eşya Taşıma",
+    description: "Küçük mobilyalardan beyaz eşyaya kadar her türlü eşya taşıma.",
+  },
+  {
+    icon: Network,
+    title: "Lojistik",
+    description: "Depolama, dağıtım ve nakliye lojistik çözümleri.",
   },
 ];
 
