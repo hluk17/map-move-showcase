@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Truck, MapPin, Briefcase, Package, Network } from "lucide-react";
+import { Truck, MapPin, Briefcase, Network } from "lucide-react";
 
 const services = [
   {
@@ -16,11 +16,6 @@ const services = [
     icon: Briefcase,
     title: "Ofis Taşımacılığı",
     description: "İş yerinizi minimum aksama ile yeni adresinize taşıma hizmeti.",
-  },
-  {
-    icon: Package,
-    title: "Ufak Büyük Eşya Taşıma",
-    description: "Küçük mobilyalardan beyaz eşyaya kadar her türlü eşya taşıma.",
   },
   {
     icon: Network,
