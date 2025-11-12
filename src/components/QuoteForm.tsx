@@ -9,7 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { toast } from "sonner";
 import { MapPin, Home, Briefcase, Truck, Package } from "lucide-react";
 
-type ServiceType = "ev-tasima" | "profil-tasima" | "arac-kiralama" | "diger" | null;
+type ServiceType = "ev-tasima" | "profil-tasima" | "arac-kiralama" | "lojistik" | null;
 
 const QuoteForm = () => {
   const [selectedService, setSelectedService] = useState<ServiceType>(null);
@@ -66,7 +66,7 @@ const QuoteForm = () => {
     { value: "ev-tasima", label: "Ev Taşıma", icon: Home, description: "Ev eşyalarınızın güvenli taşınması" },
     { value: "profil-tasima", label: "Profil Taşıma", icon: Briefcase, description: "Profesyonel ekipman taşımacılığı" },
     { value: "arac-kiralama", label: "Araç Kiralama", icon: Truck, description: "İhtiyacınıza uygun araç kiralama" },
-    { value: "diger", label: "Diğer", icon: Package, description: "Özel taşıma hizmetleri" },
+    { value: "lojistik", label: "Lojistik", icon: Package, description: "Lojistik ve kargo hizmetleri" },
   ];
 
   return (
@@ -79,9 +79,9 @@ const QuoteForm = () => {
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-6">
+        <div className="max-w-3xl mx-auto">
           {/* Service Selection */}
-          <Card className={`shadow-medium transition-all duration-300 ${selectedService ? 'scale-95 opacity-80' : ''}`}>
+          <Card className="shadow-medium">
             <CardHeader>
               <CardTitle>Hizmet Türünü Seçin</CardTitle>
               <CardDescription>Size en uygun hizmeti belirleyin</CardDescription>
@@ -96,7 +96,7 @@ const QuoteForm = () => {
                       key={option.value}
                       className={`cursor-pointer transition-all duration-300 ${
                         isSelected 
-                          ? 'border-primary ring-2 ring-primary shadow-lg scale-105' 
+                          ? 'border-primary ring-2 ring-primary shadow-lg' 
                           : 'hover:border-primary hover:shadow-soft'
                       }`}
                       onClick={() => setSelectedService(option.value as ServiceType)}
@@ -114,19 +114,22 @@ const QuoteForm = () => {
           </Card>
 
           {/* Form */}
-          {selectedService && (
-            <Card className="shadow-medium animate-scale-in origin-top">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <CardTitle>Teklif Formu - {serviceOptions.find(s => s.value === selectedService)?.label}</CardTitle>
-                    <CardDescription>Bilgilerinizi doldurun</CardDescription>
+          <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
+            selectedService ? 'max-h-[5000px] opacity-100 mt-6' : 'max-h-0 opacity-0'
+          }`}>
+            {selectedService && (
+              <Card className="shadow-medium">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle>Teklif Formu - {serviceOptions.find(s => s.value === selectedService)?.label}</CardTitle>
+                      <CardDescription>Bilgilerinizi doldurun</CardDescription>
+                    </div>
+                    <Button variant="ghost" onClick={() => setSelectedService(null)}>
+                      Değiştir
+                    </Button>
                   </div>
-                  <Button variant="ghost" onClick={() => setSelectedService(null)}>
-                    Değiştir
-                  </Button>
-                </div>
-              </CardHeader>
+                </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Contact Information */}
@@ -377,7 +380,7 @@ const QuoteForm = () => {
                     </div>
                   )}
 
-                  {selectedService === "diger" && (
+                  {selectedService === "lojistik" && (
                     <div className="space-y-4">
                       <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                         <MapPin className="w-5 h-5 text-primary" />
@@ -429,7 +432,8 @@ const QuoteForm = () => {
                 </form>
               </CardContent>
             </Card>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </section>
