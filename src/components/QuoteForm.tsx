@@ -81,38 +81,41 @@ const QuoteForm = () => {
 
         <div className="max-w-3xl mx-auto space-y-6">
           {/* Service Selection */}
-          {!selectedService && (
-            <Card className="shadow-medium">
-              <CardHeader>
-                <CardTitle>Hizmet Türünü Seçin</CardTitle>
-                <CardDescription>Size en uygun hizmeti belirleyin</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {serviceOptions.map((option) => {
-                    const Icon = option.icon;
-                    return (
-                      <Card
-                        key={option.value}
-                        className="cursor-pointer hover:border-primary transition-all hover:shadow-soft"
-                        onClick={() => setSelectedService(option.value as ServiceType)}
-                      >
-                        <CardContent className="p-6 text-center space-y-3">
-                          <Icon className="w-12 h-12 mx-auto text-primary" />
-                          <h3 className="font-semibold text-lg text-foreground">{option.label}</h3>
-                          <p className="text-sm text-muted-foreground">{option.description}</p>
-                        </CardContent>
-                      </Card>
-                    );
-                  })}
-                </div>
-              </CardContent>
-            </Card>
-          )}
+          <Card className={`shadow-medium transition-all duration-300 ${selectedService ? 'scale-95 opacity-80' : ''}`}>
+            <CardHeader>
+              <CardTitle>Hizmet Türünü Seçin</CardTitle>
+              <CardDescription>Size en uygun hizmeti belirleyin</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {serviceOptions.map((option) => {
+                  const Icon = option.icon;
+                  const isSelected = selectedService === option.value;
+                  return (
+                    <Card
+                      key={option.value}
+                      className={`cursor-pointer transition-all duration-300 ${
+                        isSelected 
+                          ? 'border-primary ring-2 ring-primary shadow-lg scale-105' 
+                          : 'hover:border-primary hover:shadow-soft'
+                      }`}
+                      onClick={() => setSelectedService(option.value as ServiceType)}
+                    >
+                      <CardContent className="p-6 text-center space-y-3">
+                        <Icon className={`w-12 h-12 mx-auto transition-colors ${isSelected ? 'text-primary' : 'text-primary/70'}`} />
+                        <h3 className="font-semibold text-lg text-foreground">{option.label}</h3>
+                        <p className="text-sm text-muted-foreground">{option.description}</p>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Form */}
           {selectedService && (
-            <Card className="shadow-medium">
+            <Card className="shadow-medium animate-scale-in origin-top">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
