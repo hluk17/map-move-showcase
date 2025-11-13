@@ -99,7 +99,7 @@ const QuoteForm = () => {
                           ? 'border-primary ring-2 ring-primary shadow-lg' 
                           : 'hover:border-primary hover:shadow-soft'
                       }`}
-                      onClick={() => setSelectedService(option.value as ServiceType)}
+                      onClick={() => setSelectedService(selectedService === option.value ? null : option.value as ServiceType)}
                     >
                       <CardContent className="p-6 text-center space-y-3">
                         <Icon className={`w-12 h-12 mx-auto transition-colors ${isSelected ? 'text-primary' : 'text-primary/70'}`} />
@@ -120,15 +120,8 @@ const QuoteForm = () => {
             {selectedService && (
               <Card className="shadow-medium">
                 <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <CardTitle>Teklif Formu - {serviceOptions.find(s => s.value === selectedService)?.label}</CardTitle>
-                      <CardDescription>Bilgilerinizi doldurun</CardDescription>
-                    </div>
-                    <Button variant="ghost" onClick={() => setSelectedService(null)}>
-                      Değiştir
-                    </Button>
-                  </div>
+                  <CardTitle>Teklif Formu - {serviceOptions.find(s => s.value === selectedService)?.label}</CardTitle>
+                  <CardDescription>Bilgilerinizi doldurun</CardDescription>
                 </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
