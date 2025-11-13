@@ -21,9 +21,34 @@ const Hero = () => {
       <div className="container mx-auto px-4 z-10 pt-16">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground leading-tight">
-                Taşınırken 
+                                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Taşınırken
+
 Yanınızdayız
-            <span className="text-primary block">Yanınızdayız</span>
+            <span className="text-primary block">                    Yanınızdayız</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-muted-foreground max-w-2xl">30 yıllık birikim, binlerce taşınmanın güvencesi: Evden sanayiye, her yük emin ellerde.</p>
           <div className="flex flex-col sm:flex-row gap-4">
