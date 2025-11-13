@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,6 +13,8 @@ type ServiceType = "ev-tasima" | "profil-tasima" | "arac-kiralama" | "lojistik" 
 
 const QuoteForm = () => {
   const [selectedService, setSelectedService] = useState<ServiceType>(null);
+  const [isClosing, setIsClosing] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -81,6 +83,32 @@ const QuoteForm = () => {
     return () => document.removeEventListener('focusin', handleFocus);
   }, []);
 
+  // Scroll to form when service is selected
+  useEffect(() => {
+    if (selectedService && formRef.current) {
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start',
+        });
+      }, 100);
+    }
+  }, [selectedService]);
+
+  const handleServiceChange = (service: ServiceType) => {
+    if (selectedService === service) {
+      // Closing animation
+      setIsClosing(true);
+      setTimeout(() => {
+        setSelectedService(null);
+        setIsClosing(false);
+      }, 300);
+    } else {
+      setIsClosing(false);
+      setSelectedService(service);
+    }
+  };
+
   const serviceOptions = [
     { value: "ev-tasima", label: "Ev Taşıma", icon: Home, description: "Ev eşyalarınızın güvenli taşınması" },
     { value: "profil-tasima", label: "Profil Taşıma", icon: Briefcase, description: "Profesyonel ekipman taşımacılığı" },
@@ -118,7 +146,7 @@ const QuoteForm = () => {
                           ? 'border-primary ring-2 ring-primary shadow-lg' 
                           : 'hover:border-primary hover:shadow-soft'
                       }`}
-                      onClick={() => setSelectedService(selectedService === option.value ? null : option.value as ServiceType)}
+                      onClick={() => handleServiceChange(option.value as ServiceType)}
                     >
                       <CardContent className="p-6 text-center space-y-3">
                         <Icon className={`w-12 h-12 mx-auto transition-colors ${isSelected ? 'text-primary' : 'text-primary/70'}`} />
@@ -133,9 +161,12 @@ const QuoteForm = () => {
           </Card>
 
           {/* Form */}
-          <div className={`overflow-hidden transition-all duration-700 ease-in-out ${
-            selectedService ? 'max-h-[5000px] opacity-100 mt-6' : 'max-h-0 opacity-0 mt-0'
-          }`}>
+          <div 
+            ref={formRef}
+            className={`overflow-hidden transition-all duration-500 ease-in-out ${
+              selectedService && !isClosing ? 'max-h-[5000px] opacity-100 mt-6' : 'max-h-0 opacity-0 mt-0'
+            }`}
+          >
             {selectedService && (
               <Card className="shadow-medium animate-in fade-in-0 zoom-in-95 slide-in-from-top-4 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:slide-out-to-top-4 duration-700 ring-2 ring-primary/20 shadow-[0_0_40px_rgba(var(--primary),0.15)]">
                 <CardHeader>
