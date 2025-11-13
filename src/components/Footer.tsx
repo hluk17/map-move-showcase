@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">Hızlı Taşımacılık</h3>
+            <h3 className="text-2xl font-bold mb-4">Sancak Nakliyat</h3>
             <p className="text-primary-foreground/80 mb-4">
               Güvenilir ve profesyonel ev taşıma hizmetlerinde yanınızdayız.
             </p>
@@ -44,7 +44,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60">
-          <p>&copy; {new Date().getFullYear()} Hızlı Taşımacılık. Tüm hakları saklıdır.</p>
+          <p>&copy; {new Date().getFullYear()} Sancak Nakliyat. Tüm hakları saklıdır.</p>
         </div>
       </div>
     </footer>
