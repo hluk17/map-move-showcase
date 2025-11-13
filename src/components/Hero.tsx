@@ -21,7 +21,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 z-10 pt-16">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground leading-tight">
-            Evinize Taşınırken
+                Taşınırken 
 Yanınızdayız
             <span className="text-primary block">Yanınızdayız</span>
           </h1>
