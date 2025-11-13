@@ -114,11 +114,11 @@ const QuoteForm = () => {
           </Card>
 
           {/* Form */}
-          <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
-            selectedService ? 'max-h-[5000px] opacity-100 mt-6' : 'max-h-0 opacity-0'
+          <div className={`overflow-hidden transition-all duration-700 ease-in-out ${
+            selectedService ? 'max-h-[5000px] opacity-100 mt-6' : 'max-h-0 opacity-0 mt-0'
           }`}>
             {selectedService && (
-              <Card className="shadow-medium">
+              <Card className="shadow-medium animate-in fade-in-0 zoom-in-95 slide-in-from-top-4 duration-700 ring-2 ring-primary/20 shadow-[0_0_40px_rgba(var(--primary),0.15)]">
                 <CardHeader>
                   <CardTitle>Teklif Formu - {serviceOptions.find(s => s.value === selectedService)?.label}</CardTitle>
                   <CardDescription>Bilgilerinizi doldurun</CardDescription>
