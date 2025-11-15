@@ -139,21 +139,21 @@ const QuoteForm = () => {
                   const Icon = option.icon;
                   const isSelected = selectedService === option.value;
                   return (
-                    <Card
-                      key={option.value}
-                      className={`cursor-pointer transition-all duration-300 ${
-                        isSelected 
-                          ? 'border-primary ring-2 ring-primary shadow-lg' 
-                          : 'hover:border-primary hover:shadow-soft'
-                      }`}
-                      onClick={() => handleServiceChange(option.value as ServiceType)}
-                    >
-                      <CardContent className="p-6 text-center space-y-3">
-                        <Icon className={`w-12 h-12 mx-auto transition-colors ${isSelected ? 'text-primary' : 'text-primary/70'}`} />
-                        <h3 className="font-semibold text-lg text-foreground">{option.label}</h3>
-                        <p className="text-sm text-muted-foreground">{option.description}</p>
-                      </CardContent>
-                    </Card>
+                  <Card
+                    key={option.value}
+                    className={`cursor-pointer transition-all duration-300 ${
+                      isSelected 
+                        ? 'border-primary ring-2 ring-primary shadow-lg bg-primary' 
+                        : 'bg-background hover:border-primary hover:shadow-soft'
+                    }`}
+                    onClick={() => handleServiceChange(option.value as ServiceType)}
+                  >
+                    <CardContent className="p-6 text-center space-y-3">
+                      <Icon className={`w-12 h-12 mx-auto transition-colors ${isSelected ? 'text-primary-foreground' : 'text-primary/70'}`} />
+                      <h3 className={`font-semibold text-lg transition-colors ${isSelected ? 'text-primary-foreground' : 'text-foreground'}`}>{option.label}</h3>
+                      <p className={`text-sm transition-colors ${isSelected ? 'text-primary-foreground/80' : 'text-muted-foreground'}`}>{option.description}</p>
+                    </CardContent>
+                  </Card>
                   );
                 })}
               </div>
