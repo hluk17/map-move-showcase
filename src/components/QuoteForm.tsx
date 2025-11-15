@@ -113,7 +113,7 @@ const QuoteForm = () => {
     { value: "ev-tasima", label: "Ev Taşıma", icon: Home, description: "Ev eşyalarınızın güvenli taşınması" },
     { value: "profil-tasima", label: "Demir / Profil Taşıma", icon: Briefcase, description: "Profesyonel ekipman taşımacılığı" },
     { value: "arac-kiralama", label: "Araç Kiralama", icon: Truck, description: "İhtiyacınıza uygun araç kiralama" },
-    { value: "lojistik", label: "Lojistik", icon: Package, description: "Lojistik ve kargo hizmetleri" },
+    { value: "diger-tasima", label: "Diğer Taşıma Türleri", icon: Package, description: "Mobilya, beyaz eşya ve özel eşya taşımacılığı" },
   ];
 
   return (

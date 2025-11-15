@@ -19,8 +19,8 @@ const services = [
   },
   {
     icon: Package,
-    title: "Lojistik",
-    description: "Depolama, dağıtım ve kargo lojistik çözümleri.",
+    title: "Diğer Taşıma Türleri",
+    description: "Mobilya, beyaz eşya ve özel eşya taşımacılığı hizmetleri.",
   },
 ];
 

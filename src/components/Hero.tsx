@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-logistics.jpg";
+import heroImage from "@/assets/hero-kamyonet.jpg";
 import { ArrowRight } from "lucide-react";
 const Hero = () => {
   const scrollToQuote = () => {
@@ -13,7 +13,7 @@ const Hero = () => {
   return <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img src={heroImage} alt="Professional logistics delivery truck" className="w-full h-full object-cover" />
+        <img src={heroImage} alt="Professional commercial delivery van" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
       </div>
 
