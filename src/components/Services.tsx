@@ -9,7 +9,7 @@ const services = [
   },
   {
     icon: Briefcase,
-    title: "Profil Taşıma",
+    title: "Demir / Profil Taşıma",
     description: "Cam balkon, PVC kapı-pencere gibi profillerin özenli taşınması.",
   },
   {
