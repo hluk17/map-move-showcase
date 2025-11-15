@@ -31,16 +31,16 @@ const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   return (
-    <section id="gallery" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Çalışmalarımız</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+    <section id="gallery" className="py-16 md:py-24 bg-background">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">Çalışmalarımız</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
             Başarıyla tamamladığımız taşıma işleri ve mutlu müşterilerimiz
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {galleryImages.map((image, index) => (
             <div
               key={index}

@@ -16,15 +16,15 @@ const Reviews = () => {
   };
 
   return (
-    <section id="reviews" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+    <section id="reviews" className="py-16 md:py-24 bg-background">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="text-center mb-12 md:mb-16">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Star className="w-8 h-8 text-accent fill-accent" />
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">Müşteri Yorumları</h2>
-            <Star className="w-8 h-8 text-accent fill-accent" />
+            <Star className="w-6 h-6 sm:w-8 sm:h-8 text-accent fill-accent" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">Müşteri Yorumları</h2>
+            <Star className="w-6 h-6 sm:w-8 sm:h-8 text-accent fill-accent" />
           </div>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
             Google'daki müşteri yorumlarımız
           </p>
         </div>
