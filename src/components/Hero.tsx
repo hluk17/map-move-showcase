@@ -45,8 +45,7 @@ const Hero = () => {
 
 
 
-Taşınırken
-
+                                                                                                                                                                                                                                                                                        Taşınırken
 Yanınızdayız
             <span className="text-primary block">                    Yanınızdayız</span>
           </h1>
