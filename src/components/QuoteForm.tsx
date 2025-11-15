@@ -117,11 +117,11 @@ const QuoteForm = () => {
   ];
 
   return (
-    <section id="quote" className="py-24 bg-secondary/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Ücretsiz Teklif Alın</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+    <section id="quote" className="py-16 md:py-24 bg-secondary/30">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">Ücretsiz Teklif Alın</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
             Hizmet türünü seçin ve formu doldurun
           </p>
         </div>
@@ -130,11 +130,11 @@ const QuoteForm = () => {
           {/* Service Selection */}
           <Card className="shadow-medium">
             <CardHeader>
-              <CardTitle>Hizmet Türünü Seçin</CardTitle>
-              <CardDescription>Size en uygun hizmeti belirleyin</CardDescription>
+              <CardTitle className="text-xl sm:text-2xl">Hizmet Türünü Seçin</CardTitle>
+              <CardDescription className="text-sm sm:text-base">Size en uygun hizmeti belirleyin</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {serviceOptions.map((option) => {
                   const Icon = option.icon;
                   const isSelected = selectedService === option.value;
