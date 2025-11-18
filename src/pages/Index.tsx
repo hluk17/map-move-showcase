@@ -11,15 +11,30 @@ import Footer from "@/components/Footer";
 const Index = () => {
   useEffect(() => {
     const handleScroll = () => {
+      const hero = document.getElementById("home");
       const aboutSection = document.getElementById("about");
-      if (aboutSection) {
-        const aboutPosition = aboutSection.offsetTop;
-        const scrollPosition = window.scrollY + window.innerHeight / 2;
+      
+      if (hero && aboutSection) {
+        const heroHeight = hero.offsetHeight;
+        const scrollY = window.scrollY;
         
-        if (scrollPosition >= aboutPosition) {
+        // Transition happens during the first screen height of scrolling
+        const transitionProgress = Math.min(scrollY / heroHeight, 1);
+        
+        // Apply dark mode when transition is more than 50% complete
+        if (transitionProgress > 0.5) {
           document.documentElement.classList.add("dark");
         } else {
           document.documentElement.classList.remove("dark");
+        }
+        
+        // Make hero sticky during transition, then release
+        if (transitionProgress < 1) {
+          hero.style.position = "sticky";
+          hero.style.top = "0";
+        } else {
+          hero.style.position = "relative";
+          hero.style.top = "auto";
         }
       }
     };
