@@ -108,11 +108,15 @@ All colors MUST be HSL.
   }
 
   html {
-    transition: background-color 0.5s ease, color 0.5s ease;
+    transition: background-color 1.2s ease, color 1.2s ease;
   }
 
   body {
     @apply bg-background text-foreground;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    transition: background-color 1.2s ease, color 1.2s ease;
+  }
+  
+  * {
+    transition: background-color 1.2s ease, color 1.2s ease, border-color 1.2s ease;
   }
 }
