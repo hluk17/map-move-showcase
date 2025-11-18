@@ -12,29 +12,28 @@ const Index = () => {
   useEffect(() => {
     const handleScroll = () => {
       const hero = document.getElementById("home");
-      const aboutSection = document.getElementById("about");
       
-      if (hero && aboutSection) {
+      if (hero) {
         const heroHeight = hero.offsetHeight;
         const scrollY = window.scrollY;
         
-        // Transition happens during the first screen height of scrolling
-        const transitionProgress = Math.min(scrollY / heroHeight, 1);
+        // Calculate scroll progress (0 to 1)
+        const scrollProgress = Math.min(scrollY / heroHeight, 1);
         
-        // Apply dark mode when transition is more than 50% complete
-        if (transitionProgress > 0.5) {
+        // Parallax effect - hero moves slower (0.5x speed)
+        hero.style.transform = `translateY(${scrollY * 0.5}px)`;
+        
+        // Apply dark mode when hero is completely scrolled past
+        if (scrollProgress >= 0.95) {
           document.documentElement.classList.add("dark");
         } else {
           document.documentElement.classList.remove("dark");
         }
         
-        // Make hero sticky during transition, then release
-        if (transitionProgress < 1) {
-          hero.style.position = "sticky";
-          hero.style.top = "0";
-        } else {
-          hero.style.position = "relative";
-          hero.style.top = "auto";
+        // Create gradient overlay that intensifies with scroll
+        const overlay = document.getElementById("scroll-overlay");
+        if (overlay) {
+          overlay.style.opacity = `${scrollProgress}`;
         }
       }
     };
@@ -47,6 +46,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      {/* Gradient overlay for smooth color transition */}
+      <div 
+        id="scroll-overlay" 
+        className="fixed inset-0 bg-gradient-to-b from-background to-background pointer-events-none z-[5]"
+        style={{ opacity: 0 }}
+      />
       <Navigation />
       <Hero />
       <About />
