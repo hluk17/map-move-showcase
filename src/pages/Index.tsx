@@ -11,29 +11,15 @@ import Footer from "@/components/Footer";
 const Index = () => {
   useEffect(() => {
     const handleScroll = () => {
-      const hero = document.getElementById("home");
-      
-      if (hero) {
-        const heroHeight = hero.offsetHeight;
-        const scrollY = window.scrollY;
+      const aboutSection = document.getElementById("about");
+      if (aboutSection) {
+        const aboutPosition = aboutSection.offsetTop;
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
         
-        // Calculate scroll progress (0 to 1)
-        const scrollProgress = Math.min(scrollY / heroHeight, 1);
-        
-        // Parallax effect - hero moves slower (0.5x speed)
-        hero.style.transform = `translateY(${scrollY * 0.5}px)`;
-        
-        // Apply dark mode when hero is completely scrolled past
-        if (scrollProgress >= 0.95) {
+        if (scrollPosition >= aboutPosition) {
           document.documentElement.classList.add("dark");
         } else {
           document.documentElement.classList.remove("dark");
-        }
-        
-        // Create gradient overlay that intensifies with scroll
-        const overlay = document.getElementById("scroll-overlay");
-        if (overlay) {
-          overlay.style.opacity = `${scrollProgress}`;
         }
       }
     };
@@ -46,12 +32,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Gradient overlay for smooth color transition */}
-      <div 
-        id="scroll-overlay" 
-        className="fixed inset-0 bg-gradient-to-b from-background to-background pointer-events-none z-[5]"
-        style={{ opacity: 0 }}
-      />
       <Navigation />
       <Hero />
       <About />
